@@ -1,0 +1,38 @@
+<div>
+    <div class="row">
+        <div class="col-sm-12 btn btn-primary">
+            Bike Page
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+        <!-- aqui ponemos los botones que van a filtrar por categoria  -->
+        <div class="col-sm-1"></div>
+        <!-- segun el boton que toque cambie el nombre de la variable "filterBy" -->
+        <div class="col-sm-2">
+            <button class="btn btn-success" (click)="filterBy='all'">All Models</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" (click)="filterBy='adultosrc'">Para adultos</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" (click)="filterBy='bkeco'">Economicas</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" (click)="filterBy='bkmotor'">Con Motor</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" (click)="filterBy='nenesrc'">Para niños</button>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+    <!-- AQUI VA EL CONTENIDO DE LA PAGINA-->
+    <!-- (allImages | filterimages : filterBy) le pasamos el parametros al pipes de la variables filterBy para que filtre la imagenes -->
+    <div class="card-group" *ngFor="let image of  (allImages | filterImages : filterBy)">
+        <div class="card">
+            <img src="{{ image.url }}" class="card-img-top" alt="{{ image.brand }}">
+            <div class="card-body">
+                <h5 class="card-title">Bike Number : {{ image.id }}</h5>
+            </div>
+        </div>
+</div>
